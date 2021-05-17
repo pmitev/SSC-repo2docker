@@ -1,0 +1,1 @@
+# SSC-repo2docker
