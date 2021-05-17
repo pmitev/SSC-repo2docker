@@ -1,0 +1,21 @@
+# common functions
+
+OS_server_list () { echo $(openstack server list | awk 'NR >= 4 {print $4}') ; }
+
+OS_server_get_ip () { echo $(openstack server show -f yaml -c addresses ${1} | awk '$1=="-" { print $2}' ) ; }
+OS_server_get_volumes () { echo $(openstack server show -f yaml -c volumes_attached ${1} | awk '$1=="-" { print $3}' ) ; }
+
+# Check for free floating IPs in the pool of allocated to the project
+OS_floating_ip_list_free () {  echo $(openstack floating ip list | awk '$6=="None" {print $4}' ) ; }
+
+
+OS_assign_floating_ip () {
+  local FLOATING_IP_FREE=( $(OS_floating_ip_list_free) )
+  
+  if [ -z ${FLOATING_IP_FREE[0]} ]; then
+    echo "No non-alocated floating IP in the pool. Trying to allocate..."
+    openstack floating ip create "Public External IPv4 Network"
+  fi
+  
+  openstack server add floating ip ${1} ${FLOATING_IP_FREE[0]}
+}
