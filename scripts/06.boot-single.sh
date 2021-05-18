@@ -38,7 +38,7 @@ EOF
 
   # Start VM with the specified parameters ==============================================
   openstack server create \
-    --image e8f021f0-9cb4-4e68-bc1f-e7d91719d59a \
+    --image f584099f-2985-42ca-85dc-e9bf7bec202c \
     --flavor ssc.medium \
     --boot-from-volume 150 \
     --key-name singularity \

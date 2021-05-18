@@ -30,4 +30,4 @@ python3 -m pip install --no-cache-dir jupyter-repo2docker
 
 # Build to cache layers ==========================================================================
 
-su ubuntu -c "jupyter-repo2docker --no-run https://github.com/pmitev/jupyter-binder.git"
+su ubuntu -c "jupyter-repo2docker --no-run https://github.com/pmitev/word-count.git"

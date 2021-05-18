@@ -8,7 +8,7 @@ import subprocess, shlex
 import os
 
 CMD2RUN= "./06.boot-single.sh ${par1} ${par2}"
-GIT_URL= "https://github.com/pmitev/jupyter-binder.git"
+GIT_URL= "https://github.com/pmitev/word-count.git"
 
 #=======================================================================================
 # Allowed github user id's
